@@ -1,0 +1,54 @@
+﻿@inject ADB.BL.Interfaces.IEmployeeRepo employee
+@inject ADB.BL.Interfaces.IDepartmentRepo department
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="block-header">
+    <h2>Welcome To Injections Page</h2>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">Id</th>
+            <th class="text-center">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in employee.Get())
+        {
+            <tr class="text-center">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">Id</th>
+            <th class="text-center">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in department.Get())
+        {
+            <tr class="text-center">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<select>
+    <option>Choose Department</option>
+    @foreach (var item in department.Get())
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>

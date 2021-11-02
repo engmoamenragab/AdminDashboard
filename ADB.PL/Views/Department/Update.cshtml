@@ -1,0 +1,37 @@
+﻿@model ADB.BL.Models.DepartmentVM
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="block-header">
+    <h2>Update Department</h2>
+</div>
+
+<form asp-controller="Department" asp-action="Update" class="form-group">
+    <div asp-validation-summary="All" class="bg-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <label asp-for="Name">Department Name</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+
+    <label asp-for="Code">Department Code</label>
+    <input type="text" class="form-control" asp-for="Code" />
+    <span asp-validation-for="Code" class="text-danger"></span>
+    <br />
+
+    <center>
+        <a asp-controller="Department" asp-action="Index" class="btn btn-info">Back</a>
+        <input type="submit" value="Update" class="btn btn-warning" />
+        <a asp-controller="Department" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        <input type="reset" value="Reset" class="btn btn-primary" />
+    </center>
+</form>
+
+@section JqueryValidation
+{
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

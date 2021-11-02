@@ -1,0 +1,49 @@
+﻿@model ADB.BL.Models.EmployeeVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="block-header">
+    <h2>Employee Details</h2>
+</div>
+
+<label asp-for="Id">Employee Id</label>
+<input type="text" class="form-control" asp-for="Id" disabled />
+<br />
+
+<label asp-for="Name">Employee Name</label>
+<input type="text" class="form-control" asp-for="Name" disabled />
+<br />
+
+<label asp-for="Salary">Employee Salary</label>
+<input type="text" class="form-control" asp-for="Salary" disabled />
+<br />
+
+<label asp-for="Address">Employee Address</label>
+<input type="text" class="form-control" asp-for="Address" disabled />
+<br />
+
+<label asp-for="HireDate">Employee HireDate</label>
+<input type="text" class="form-control" asp-for="HireDate" disabled />
+<br />
+
+<label asp-for="Email">Employee Email</label>
+<input type="text" class="form-control" asp-for="Email" disabled />
+<br />
+
+<label asp-for="IsActive">Employee IsActive</label>
+<input type="text" class="form-control" asp-for="IsActive" disabled />
+<br />
+
+<label asp-for="Notes">Employee Notes</label>
+<textarea class="form-control" asp-for="Notes" disabled></textarea>
+<br />
+
+<label asp-for="DepartmentId">Employee Department</label>
+<select asp-for="DepartmentId" class="form-control" asp-items="(SelectList)ViewBag.DepartmentList" disabled></select>
+
+<div class="text-center" style="margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;">
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-info">Back</a>
+    <a asp-controller="Employee" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+</div>

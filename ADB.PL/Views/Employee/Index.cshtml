@@ -1,0 +1,177 @@
+﻿@*@model IEnumerable<ADB.PL.Models.Employee>*@
+@model IEnumerable<ADB.BL.Models.EmployeeVM>
+
+@{
+    ViewData["Title"] = "Employee";
+}
+
+@section SelectDataTableCss {
+    <!-- Select And Datatable Css -->
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
+
+<div class="block-header">
+    <h2>Welcome To Employees Page</h2>
+</div>
+
+@*<center>
+        <h3>
+            @ViewData["X"]
+        </h3>
+        <br />
+        <br />
+        <h3>
+            @ViewBag.Y
+        </h3>
+        <br />
+        <br />
+        <h3>
+            @TempData["Z"]
+        </h3>
+        <br />
+        <br />
+    </center>*@
+
+@*<table border="1">
+        <tr><th>Name</th></tr>
+        @foreach (var item in ViewBag.Data)
+        {
+            <tr>
+                <td>
+                    @item
+                </td>
+            </tr>
+        }
+    </table>
+
+    <select>
+        <option>Choose Name</option>
+        @foreach (var item in ViewBag.Data)
+        {
+            <option>@item</option>
+        }
+    </select>
+
+    <ul>
+        @foreach (var item in ViewBag.Data)
+        {
+            <li>@item</li>
+        }
+    </ul>
+
+    <input type="text" list="MyList" placeholder="Search..." />
+    <datalist id="MyList">
+        @foreach (var item in ViewBag.Data)
+        {
+            <option>@item</option>
+        }
+    </datalist>*@
+
+@*<table class="table table-striped table-hover table-bordered text-center font-weight-bold">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Salary</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Salary</td>
+            </tr>
+        }
+    </table>*@
+
+<br />
+<div class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2" style="margin-bottom: 1.5rem !important;">
+                <a asp-controller="Employee" asp-action="Create" class="btn btn-primary w-100">Create New Employee</a>
+            </div>
+            <form asp-controller="Employee" asp-action="Index" method="get">
+                <div class="col-xl-12" style="margin-bottom: 1.5rem !important;">
+                    <input type="text" class="form-control" name="SearchValue" placeholder="Search By Name ..." />
+                </div>
+                <div class="col-xl-2" style="margin-bottom: 1.5rem !important;">
+                    <input type="submit" class="btn btn-warning w-100" value="Search" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Welcome To Employees</h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Salary</th>
+                                    <th class="text-center">Department</th>
+                                    <th class="text-center">Details</th>
+                                    <th class="text-center">Update</th>
+                                    <th class="text-center">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="text-center">
+                                        <td>@item.Id</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Salary</td>
+                                        <td>@item.Department.Name</td>
+                                        <td><a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+                                        <td><a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Update</a></td>
+                                        <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section SelectDataTableJs {
+    <!-- Select And Datatable Plugin Js -->
+    <script src="~/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="~/js/datatable.instance.js"></script>
+}
