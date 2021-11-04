@@ -1,6 +1,7 @@
 ﻿using ADB.BL.Interfaces;
 using ADB.DAL.Database;
 using ADB.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace ADB.BL.Repository
         {
             if(filter == null)
             {
-                var data = adminDashboardDb.City.Select(C => C);
+                var data = adminDashboardDb.City.Include("Country").Select(C => C);
                 return data;
             }
             else

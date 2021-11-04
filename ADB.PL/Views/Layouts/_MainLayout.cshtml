@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -21,11 +25,19 @@
     <!-- Morris Chart Css-->
     <link href="~/plugins/morrisjs/morris.css" rel="stylesheet" />
     <!-- Custom Css -->
-    <link href="~/css/style.css" rel="stylesheet" />
+    @if (Culture == "en-US")
+    {
+        <link href="~/css/style.css" rel="stylesheet" />
+    }
+    else
+    {
+        <link href="~/css/style-ar.css" rel="stylesheet" />
+        <link href="~/css/style-rtl.css" rel="stylesheet" />
+    }
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="~/css/themes/all-themes.css" rel="stylesheet" />
 </head>
-<body class="theme-red">
+<body class="theme-red" dir="ltr">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -67,6 +79,34 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <!-- Languages -->
+                    @if (Culture == "en-US")
+                    {
+                        <li>
+                            @*<a asp-controller="" asp-action="" asp-route-culture="" asp-route-returnUrl=""></a>*@
+                            <a class="dropdown-item d-flex justify-content-between"
+                               href="@Url.Action("SetLanguage", "Language", new {
+                                        culture = "ar-EG",
+                                        returnUrl = Context.Request.Path + Context.Request.QueryString
+                                    })">
+                                <img src="~/images/Egypt.jpg" width="25" height="15" class="mt-1" />
+                                <span>@SharedLocalizer["Arabic"]</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a class="dropdown-item d-flex justify-content-between"
+                               href="@Url.Action("SetLanguage", "Language", new {
+                                            culture = "en-US",
+                                            returnUrl = Context.Request.Path + Context.Request.QueryString
+                                        })">
+                                <img src="~/images/usa.jpg" width="25" height="15" class="mt-1" />
+                                <span>@SharedLocalizer["English"]</span>
+                            </a>
+                        </li>
+                    }
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->

@@ -2,7 +2,7 @@
 @model IEnumerable<ADB.BL.Models.DepartmentVM>
 
 @{
-    ViewData["Title"] = "Department";
+    ViewData["Title"] = SharedLocalizer["Department"];
 }
 
 @section SelectDataTableCss {
@@ -11,7 +11,7 @@
 }
 
 <div class="block-header">
-    <h2>Welcome To Departments Page</h2>
+    <h2>@SharedLocalizer["Department"]</h2>
 </div>
 
 @*<center>
@@ -90,14 +90,14 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-2" style="margin-bottom: 1.5rem !important;">
-                <a asp-controller="Department" asp-action="Create" class="btn btn-primary">Create New Department</a>
+                <a asp-controller="Department" asp-action="Create" class="btn btn-primary">@SharedLocalizer["CD"]</a>
             </div>
             <form asp-controller="Department" asp-action="Index" method="get">
                 <div class="col-xl-8" style="margin-bottom: 1.5rem !important;">
-                    <input type="text" class="form-control" name="SearchValue" placeholder="Search By Name ..." />
+                    <input type="text" class="form-control" name="SearchValue" placeholder="@SharedLocalizer["SBN"]" />
                 </div>
                 <div class="col-xl-2" style="margin-bottom: 1.5rem !important;">
-                    <input type="submit" class="btn btn-warning" value="Search" />
+                    <input type="submit" class="btn btn-warning" value="@SharedLocalizer["Search"]" />
                 </div>
             </form>
         </div>
@@ -129,12 +129,12 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Code</th>
-                                    <th class="text-center">Details</th>
-                                    <th class="text-center">Update</th>
-                                    <th class="text-center">Delete</th>
+                                    <th class="text-center">@SharedLocalizer["Id"]</th>
+                                    <th class="text-center">@SharedLocalizer["Name"]</th>
+                                    <th class="text-center">@SharedLocalizer["DC"]</th>
+                                    <th class="text-center">@SharedLocalizer["Details"]</th>
+                                    <th class="text-center">@SharedLocalizer["Update"]</th>
+                                    <th class="text-center">@SharedLocalizer["Delete"]</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,9 +144,9 @@
                                         <td>@item.Id</td>
                                         <td>@item.Name</td>
                                         <td>@item.Code</td>
-                                        <td><a asp-controller="Department" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
-                                        <td><a asp-controller="Department" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Update</a></td>
-                                        <td><a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                                        <td><a asp-controller="Department" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">@SharedLocalizer["Details"]</a></td>
+                                        <td><a asp-controller="Department" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">@SharedLocalizer["Update"]</a></td>
+                                        <td><a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">@SharedLocalizer["Delete"]</a></td>
                                     </tr>
                                 }
                             </tbody>

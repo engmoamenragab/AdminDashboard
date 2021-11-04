@@ -58,7 +58,7 @@ namespace ADB.BL.Repository
         // ======================= Refactor ==========================
         private IEnumerable<Employee> GetEmployee()
         {
-            return adminDashboardDb.Employee.Include("Department").Select(E => E);
+            return adminDashboardDb.Employee.Include("Department").Include("District").Select(E => E);
         }
     }
 }
