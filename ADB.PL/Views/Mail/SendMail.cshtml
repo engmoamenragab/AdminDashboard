@@ -1,0 +1,31 @@
+﻿@model ADB.BL.Models.MailVM
+@{
+    ViewData["Title"] = "SendMail";
+}
+
+<center>
+    <h3 class="text-danger">
+        @TempData["Msg"]
+    </h3>
+</center>
+
+<div class="block-header">
+    <h2>SendMail</h2>
+</div>
+
+<form asp-controller="Mail" asp-action="SendMail" method="post" class="form-group">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <br />
+    <label asp-for="Title">Title</label>
+    <input asp-for="Title" type="text" class="form-control" placeholder="Enter Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label asp-for="Message">Message</label>
+    <textarea asp-for="Message" rows="4" class="form-control" placeholder="Enter Title"></textarea>
+    <span asp-validation-for="Message" class="text-danger"></span>
+    <br />
+    <center>
+        <input type="submit" value="Send" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn btn-danger" />
+    </center>
+</form>

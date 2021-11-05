@@ -372,6 +372,20 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">email</i>
+                            <span>Mail</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a asp-controller="Mail" asp-action="SendMail">Send Mail</a>
+                            </li>
+                            <li>
+                                <a @*asp-controller="Mail" asp-action="SendMail"*@ href="#">Inbox</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
