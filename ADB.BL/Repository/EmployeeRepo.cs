@@ -31,16 +31,18 @@ namespace ADB.BL.Repository
             return Data;
         }
 
-        public void Create(Employee model)
+        public Employee Create(Employee model)
         {
             adminDashboardDb.Employee.Add(model);
             adminDashboardDb.SaveChanges();
+            return adminDashboardDb.Employee.OrderBy(E => E.Id).LastOrDefault();
         }
 
-        public void Update(Employee model)
+        public Employee Update(Employee model)
         {
             adminDashboardDb.Entry(model).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             adminDashboardDb.SaveChanges();
+            return adminDashboardDb.Employee.Where(E => E.Id == model.Id).FirstOrDefault();
         }
 
         public void Delete(Employee model)

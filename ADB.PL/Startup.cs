@@ -41,9 +41,10 @@ namespace ADB.PL
                     options.DataAnnotationLocalizerProvider = (type, factory) =>
                         factory.Create(typeof(SharedResource));
                 })
-                .AddNewtonsoftJson(opt => {
+                .AddNewtonsoftJson(opt => 
+                {
                 opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            });
+                });
 
             services.AddDbContextPool<AdminDashboardContext>(options 
                 => options.UseSqlServer(Configuration.GetConnectionString("AdminDashboardDbConnection")));

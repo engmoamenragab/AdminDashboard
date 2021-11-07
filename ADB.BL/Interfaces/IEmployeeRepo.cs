@@ -11,8 +11,8 @@ namespace ADB.BL.Interfaces
     {
         IEnumerable<Employee> Get();
         Employee GetById(int Id);
-        void Create(Employee model);
-        void Update(Employee model);
+        Employee Create(Employee model);
+        Employee Update(Employee model);
         void Delete(Employee model);
         IEnumerable<Employee> SearchByName(string name);
     }
