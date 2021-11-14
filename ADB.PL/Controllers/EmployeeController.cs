@@ -1,4 +1,5 @@
-﻿using ADB.BL.Interfaces;
+﻿using ADB.BL.Helpers;
+using ADB.BL.Interfaces;
 using ADB.BL.Models;
 using ADB.DAL.Entities;
 using AutoMapper;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -71,6 +73,8 @@ namespace ADB.PL.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    model.CvName = FileUploader.UplodFile("docs", model.Cv);
+                    model.ImageName = FileUploader.UplodFile("docs", model.Image);
                     var data = mapper.Map<Employee>(model);
                     employee.Create(data);
                     return RedirectToAction("Index");

@@ -132,6 +132,9 @@
   <data name="Code Required" xml:space="preserve">
     <value>الكود مطلوب</value>
   </data>
+  <data name="Cv" xml:space="preserve">
+    <value>السيرة الذاتية</value>
+  </data>
   <data name="DASHBOARD" xml:space="preserve">
     <value>لوحة التحكم</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Id" xml:space="preserve">
     <value>التسلسل</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>الصورة</value>
   </data>
   <data name="ltr" xml:space="preserve">
     <value>rtl</value>

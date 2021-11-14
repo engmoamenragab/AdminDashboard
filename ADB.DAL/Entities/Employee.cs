@@ -24,6 +24,8 @@ namespace ADB.DAL.Entities
         public string Address { get; set; }
         public string Notes { get; set; }
         public string Email { get; set; }
+        public string ImageName { get; set; }
+        public string CvName { get; set; }
         public int DepartmentId { get; set; }
         public int DistrictId { get; set; }
         //[ForeignKey("DepartmentId")]

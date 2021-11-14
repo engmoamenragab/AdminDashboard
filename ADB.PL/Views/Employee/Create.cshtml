@@ -8,7 +8,7 @@
     <h2>Add Employee</h2>
 </div>
 
-<form asp-controller="Employee" asp-action="Create" class="form-group">
+<form asp-controller="Employee" asp-action="Create" class="form-group" enctype="multipart/form-data">
     <div asp-validation-summary="All" class="bg-danger"></div>
 
     <label asp-for="Name">Employee Name</label>
@@ -34,6 +34,14 @@
     <label asp-for="Email">Employee Email</label>
     <input type="text" class="form-control" asp-for="Email" />
     <span asp-validation-for="Email" class="text-danger"></span>
+    <br />
+
+    <label asp-for="Image">Employee Image</label>
+    <input type="file" class="form-control" asp-for="Image" />
+    <br />
+
+    <label asp-for="Cv">Employee Cv</label>
+    <input type="file" class="form-control" asp-for="Cv" />
     <br />
 
     <div class="demo-checkbox">

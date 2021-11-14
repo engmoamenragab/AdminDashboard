@@ -135,6 +135,9 @@
   <data name="Code Required" xml:space="preserve">
     <value>Code Required</value>
   </data>
+  <data name="Cv" xml:space="preserve">
+    <value>Cv</value>
+  </data>
   <data name="DASHBOARD" xml:space="preserve">
     <value>DASHBOARD</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
   </data>
   <data name="ltr" xml:space="preserve">
     <value>ltr</value>

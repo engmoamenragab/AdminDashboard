@@ -1,4 +1,5 @@
 ﻿using ADB.DAL.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,6 +29,10 @@ namespace ADB.BL.Models
         [Required(ErrorMessage = "Email Required")]
         [EmailAddress(ErrorMessage = "Email Invalid")]
         public string Email { get; set; }
+        public string ImageName { get; set; }
+        public string CvName { get; set; }
+        public IFormFile Image { get; set; }
+        public IFormFile Cv { get; set; }
         [Required(ErrorMessage = "Choose Department")]
         public int DepartmentId { get; set; }
         public int DistrictId { get; set; }

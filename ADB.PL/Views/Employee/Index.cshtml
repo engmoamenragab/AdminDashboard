@@ -135,6 +135,8 @@
                                     <th class="text-center">@SharedLocalizer["Salary"]</th>
                                     <th class="text-center">@SharedLocalizer["Department"]</th>
                                     <th class="text-center">@SharedLocalizer["District"]</th>
+                                    <th class="text-center">@SharedLocalizer["Image"]</th>
+                                    <th class="text-center">@SharedLocalizer["Cv"]</th>
                                     <th class="text-center">@SharedLocalizer["Details"]</th>
                                     <th class="text-center">@SharedLocalizer["Update"]</th>
                                     <th class="text-center">@SharedLocalizer["Delete"]</th>
@@ -144,14 +146,16 @@
                                 @foreach (var item in Model)
                                 {
                                 <tr class="text-center">
-                                        <td>@item.Id</td>
-                                        <td>@item.Name</td>
-                                        <td>@item.Salary</td>
-                                        <td>@item.Department.Name</td>
-                                        <td>@item.District.Name</td>
-                                        <td><a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">@SharedLocalizer["Details"]</a></td>
-                                        <td><a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">@SharedLocalizer["Update"]</a></td>
-                                        <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">@SharedLocalizer["Delete"]</a></td>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Salary</td>
+                                    <td>@item.Department.Name</td>
+                                    <td>@item.District.Name</td>
+                                    <td><img src="~/files/docs/@item.ImageName" height="50" width="50" /></td>
+                                    <td><a href="~/files/docs/@item.CvName" class="btn btn-info" download="download">Download CV</a></td>
+                                    <td><a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">@SharedLocalizer["Details"]</a></td>
+                                    <td><a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">@SharedLocalizer["Update"]</a></td>
+                                    <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">@SharedLocalizer["Delete"]</a></td>
                                 </tr>
                                 }
                             </tbody>

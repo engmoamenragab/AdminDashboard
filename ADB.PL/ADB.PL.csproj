@@ -17,4 +17,9 @@
     <ProjectReference Include="..\ADB.BL\ADB.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\images\" />
+    <Folder Include="wwwroot\files\docs\" />
+  </ItemGroup>
+
 </Project>
