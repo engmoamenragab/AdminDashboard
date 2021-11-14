@@ -43,7 +43,10 @@
     <label asp-for="DepartmentId">Employee Department</label>
     <select asp-for="DepartmentId" class="form-control" asp-items="(SelectList)ViewBag.DepartmentList" disabled></select>
 
-    <div  class="text-center" style="margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;">
+    <input type="hidden" asp-for="CvName" />
+    <input type="hidden" asp-for="ImageName" />
+
+    <div class="text-center" style="margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;">
         <a asp-controller="Employee" asp-action="Index" class="btn btn-info">Back</a>
         <input type="submit" value="Delete" class="btn btn-danger" />
         <a asp-controller="Employee" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>

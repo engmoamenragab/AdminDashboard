@@ -44,5 +44,22 @@ namespace ADB.BL.Helpers
                 return ex.Message;
             }
         }
+
+        public static string DeleteFile(string folderName, string fileName)
+        {
+            try
+            {
+                if (File.Exists(Directory.GetCurrentDirectory() + "wwwroot/files/" + folderName + fileName))
+                {
+                    File.Delete(Directory.GetCurrentDirectory() + "wwwroot/files/" + folderName + fileName);
+                }
+                var result = "File Deleted!";
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

@@ -73,8 +73,8 @@ namespace ADB.PL.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    model.CvName = FileUploader.UplodFile("docs", model.Cv);
-                    model.ImageName = FileUploader.UplodFile("docs", model.Image);
+                    model.CvName = FileUploader.UplodFile("docs/", model.Cv);
+                    model.ImageName = FileUploader.UplodFile("images/", model.Image);
                     var data = mapper.Map<Employee>(model);
                     employee.Create(data);
                     return RedirectToAction("Index");
@@ -141,6 +141,8 @@ namespace ADB.PL.Controllers
         {
             try
             {
+                FileUploader.DeleteFile("docs/", model.CvName);
+                FileUploader.DeleteFile("images/", model.ImageName);
                 var data = mapper.Map<Employee>(model);
                 employee.Delete(data);
                 ViewBag.DepartmentList = new SelectList(department.Get(), "Id", "Name", model.DepartmentId);
