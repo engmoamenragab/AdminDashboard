@@ -29,6 +29,11 @@
     color: #fff;
     margin-top: -5px;
 }
+.identity-page .signup-box .msg, .identity-page .login-box .msg, .identity-page .fp-box .msg {
+    color: #555;
+    margin-bottom: 30px;
+    text-align: center;
+}
 /* Navbar ====================================== */
 /*@import url(materialize.css);*/
 .navbar {
