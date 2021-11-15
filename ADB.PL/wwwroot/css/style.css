@@ -1,5 +1,36 @@
-﻿/* Navbar ====================================== */
-@import url(materialize.css);
+﻿@import url(materialize.css);
+/* Identity Pages ====================================== */
+.identity-page {
+    background-color: #00BCD4;
+    padding-left: 0;
+    max-width: 360px;
+    margin: 5% auto;
+    overflow-x: hidden;
+}
+.identity-page .signup-box .logo, .identity-page .login-box .logo, .identity-page .fp-box .logo {
+    margin-bottom: 20px;
+}
+.identity-page .signup-box .logo a, .identity-page .login-box .logo a, .identity-page .fp-box .logo a {
+    font-size: 36px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+.identity-page .signup-box a, .identity-page .login-box a, .identity-page .fp-box a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #00BCD4;
+}
+.identity-page .signup-box .logo small, .identity-page .login-box .logo small, .identity-page .fp-box .logo small {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin-top: -5px;
+}
+/* Navbar ====================================== */
+/*@import url(materialize.css);*/
 .navbar {
   font-family: "Roboto", sans-serif;
   -webkit-border-radius: 0;
