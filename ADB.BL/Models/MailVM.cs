@@ -13,5 +13,6 @@ namespace ADB.BL.Models
         public string Title { get; set; }
         [Required(ErrorMessage = "Message is required")]
         public string Message { get; set; }
+        public string Email { get; set; }
     }
 }

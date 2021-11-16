@@ -16,5 +16,7 @@ namespace ADB.BL.Models
         [MinLength(6, ErrorMessage = "Min Length 6 characters")]
         [Compare("Password", ErrorMessage = "Password not match")]
         public string ConfirmPassword { get; set; }
+        public string Email { get; set; }
+        public string Token { get; set; }
     }
 }

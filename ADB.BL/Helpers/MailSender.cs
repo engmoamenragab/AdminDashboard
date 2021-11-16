@@ -18,7 +18,7 @@ namespace ADB.BL.Helpers
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.EnableSsl = true;
                 smtp.Credentials = new NetworkCredential("eng.moamen.ragab@gmail.com", "");
-                smtp.Send("eng.moamen.ragab@gmail.com", "as8338873@gmail.com", model.Title, model.Message);
+                smtp.Send("eng.moamen.ragab@gmail.com", model.Email, model.Title, model.Message);
                 var result = "Done Mail Sent!";
                 return result;
             }
