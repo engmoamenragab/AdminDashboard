@@ -1,4 +1,5 @@
-﻿
+﻿@model ADB.BL.Models.SigninVM
+
 @{
     ViewData["Title"] = "Signin";
     Layout = "~/Views/Layouts/_IdentityLayout.cshtml";
@@ -12,30 +13,34 @@
     <div class="card">
         <div class="body">
             <form id="sign_in" method="POST" asp-controller="Account" asp-action="Signin">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="msg">Sign in to start your session</div>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="material-icons">email</i>
                     </span>
                     <div class="form-line">
-                        <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Email Address" autofocus />
                     </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="material-icons">lock</i>
                     </span>
                     <div class="form-line">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
                     </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8 p-t-5">
-                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                        <input type="checkbox" asp-for="RememberMe" id="rememberme" class="filled-in chk-col-pink">
                         <label for="rememberme">Remember Me</label>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                        @*<button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>*@
+                        <input type="submit" value="SIGN IN" class="btn btn-block btn-lg bg-pink waves-effect" />
                     </div>
                 </div>
                 <div class="row m-t-15 m-b--20">

@@ -4,6 +4,7 @@ using ADB.BL.Repository;
 using ADB.DAL.Entities;
 using ADB.PL.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace ADB.PL.Controllers
     /// <summary>
     /// Department controller to hold all data belongs to Department (CRUD)
     /// </summary>
+    [Authorize]
     public class DepartmentController : Controller
     {
         #region Fields

@@ -1,4 +1,6 @@
 ﻿using ADB.DAL.Entities;
+using ADB.DAL.Extends;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ADB.DAL.Database
 {
-    public class AdminDashboardContext:DbContext
+    public class AdminDashboardContext : IdentityDbContext<ApplicationUser>
     {
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //    => optionsBuilder.UseSqlServer("server=.;database=AdminDashboardDb;Integrated Security=true");

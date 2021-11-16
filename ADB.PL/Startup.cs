@@ -2,9 +2,13 @@ using ADB.BL.Interfaces;
 using ADB.BL.Mapper;
 using ADB.BL.Repository;
 using ADB.DAL.Database;
+using ADB.DAL.Extends;
 using ADB.PL.Languages;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -63,6 +67,29 @@ namespace ADB.PL
 
             // Take only one Instance for all clients
             //services.AddSingletone<IDepartmentRepo, DepartmentRepo>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+                        options =>
+                        {
+                            options.LoginPath = new PathString("/Account/Login");
+                            options.AccessDeniedPath = new PathString("/Account/Login");
+                        });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                // We can add a default user settings also.
+                options.User.RequireUniqueEmail = true; // True by default
+
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+            }).AddEntityFrameworkStores<AdminDashboardContext>()
+            .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,6 +124,8 @@ namespace ADB.PL
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

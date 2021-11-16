@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ADB.BL.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,22 @@ namespace ADB.PL.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Signup(SignupVM model)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+
+                }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
+        }
         #endregion
 
         #region Signin
@@ -21,6 +38,22 @@ namespace ADB.PL.Controllers
         public IActionResult Signin()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Signin(SigninVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
         }
         #endregion
 
@@ -38,6 +71,22 @@ namespace ADB.PL.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult ForgetPassword(ForgetPasswordVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
+        }
         [HttpGet]
         public IActionResult ConfirmForgetPassword()
         {
@@ -50,6 +99,22 @@ namespace ADB.PL.Controllers
         public IActionResult ResetPassword()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
         }
         [HttpGet]
         public IActionResult ConfirmResetPassword()

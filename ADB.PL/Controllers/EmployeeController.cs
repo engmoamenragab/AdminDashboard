@@ -3,6 +3,7 @@ using ADB.BL.Interfaces;
 using ADB.BL.Models;
 using ADB.DAL.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace ADB.PL.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         #region Fields

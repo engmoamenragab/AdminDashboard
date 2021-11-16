@@ -1,4 +1,5 @@
 ﻿using ADB.PL.Languages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ADB.PL.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IStringLocalizer<SharedResource> sharedLocalizer;
