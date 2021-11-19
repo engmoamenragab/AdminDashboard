@@ -40,7 +40,7 @@ namespace ADB.BL.Repository
 
         public Employee Update(Employee model)
         {
-            adminDashboardDb.Entry(model).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            adminDashboardDb.Entry(model).State = EntityState.Modified;
             adminDashboardDb.SaveChanges();
             return adminDashboardDb.Employee.Where(E => E.Id == model.Id).FirstOrDefault();
         }

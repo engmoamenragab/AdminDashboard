@@ -23,7 +23,7 @@ namespace ADB.PL.Controllers
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-        } 
+        }
         #endregion
 
         #region Signup
