@@ -151,8 +151,8 @@
                                     <td>@item.Salary</td>
                                     <td>@item.Department.Name</td>
                                     <td>@item.District.Name</td>
-                                    <td><img src="~/files/docs/@item.ImageName" height="50" width="50" /></td>
-                                    <td><a href="~/files/images/@item.CvName" class="btn btn-info" download="download">Download CV</a></td>
+                                    <td><img src="~/files/images/@item.ImageName" height="50" width="50" /></td>
+                                    <td><a href="~/files/docs/@item.CvName" class="btn btn-info" download="download">Download CV</a></td>
                                     <td><a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">@SharedLocalizer["Details"]</a></td>
                                     <td><a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">@SharedLocalizer["Update"]</a></td>
                                     <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">@SharedLocalizer["Delete"]</a></td>

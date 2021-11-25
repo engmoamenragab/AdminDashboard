@@ -1,4 +1,5 @@
 ﻿@model ADB.BL.Models.EmployeeVM
+@inject ADB.BL.Interfaces.ICountryRepo country
 @{
     ViewData["Title"] = "Update";
 }
@@ -7,7 +8,7 @@
     <h2>Update Employee</h2>
 </div>
 
-<form asp-controller="Employee" asp-action="Update" class="form-group">
+<form asp-controller="Employee" asp-action="Update" class="form-group" enctype="multipart/form-data">
     <div asp-validation-summary="All" class="bg-danger"></div>
 
     <input type="hidden" asp-for="Id" />
@@ -37,6 +38,14 @@
     <span asp-validation-for="Email" class="text-danger"></span>
     <br />
 
+    <label asp-for="Image">Employee Image</label>
+    <input type="file" class="form-control" asp-for="Image" />
+    <br />
+
+    <label asp-for="Cv">Employee Cv</label>
+    <input type="file" class="form-control" asp-for="Cv" />
+    <br />
+
     <div class="demo-checkbox">
         <input class="form-check-input" type="checkbox" asp-for="IsActive" />
         <label asp-for="IsActive">Employee IsActive</label>
@@ -53,11 +62,34 @@
     <select asp-for="DepartmentId" class="form-control" asp-items="(SelectList)ViewBag.DepartmentList">
         <option>Choose Department</option>
     </select>
+    <br />
+
+    <label for="CountryList">Employee Country</label>
+    <select id="CountryList" class="form-control">
+        <option>Choose Country</option>
+        @foreach (var item in country.Get())
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+    <br />
+
+    <label for="CityList">Employee City</label>
+    <select id="CityList" class="form-control">
+        <option>Choose City</option>
+    </select>
+    <br />
+
+    <label asp-for="DistrictId">Employee District</label>
+    <select asp-for="DistrictId" class="form-control">
+        <option>Choose District</option>
+    </select>
+    <br />
 
     <div class="text-center" style="margin-top: 1.5rem !important;">
-        <a asp-controller="Employee" asp-action="Index" class="btn btn-info">Back</a>
-        <input type="submit" value="Add" class="btn btn-primary" />
-        <input type="reset" value="Reset" class="btn btn-danger" />
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-primary">Back</a>
+        <input type="reset" value="Reset" class="btn btn-warning" />
+        <input type="submit" value="Update" class="btn btn-danger" />
     </div>
 </form>
 
@@ -65,4 +97,39 @@
 {
     <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
     <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(function () {
+            $("#CountryList").change(function () {
+                var CountryId = $("#CountryList option:selected").val();
+                $("#CityList").empty();
+                $("#CityList").append("<option>Choose City</option>");
+                $.ajax({
+                    type: "POST",
+                    url: "/Employee/GetCityDataByCountryId",
+                    data: { countryId: CountryId },
+                    success: function (result) {
+                        $.each(result, function (i, e) {
+                            $("#CityList").append("<option value='" + e.Id + "'>" + e.Name + "</option>");
+                        });
+                    }
+                });
+            });
+
+            $("#CityList").change(function () {
+                var CityId = $("#CityList option:selected").val();
+                $("#DistrictId").empty();
+                $("#DistrictId").append("<option>Choose District</option>");
+                $.ajax({
+                    type: "POST",
+                    url: "/Employee/GetDistrictDataByCityId",
+                    data: { cityId: CityId },
+                    success: function (result) {
+                        $.each(result, function (i, e) {
+                            $("#DistrictId").append("<option value='" + e.Id + "'>" + e.Name + "</option>");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 }

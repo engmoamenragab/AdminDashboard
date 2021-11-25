@@ -115,6 +115,8 @@ namespace ADB.PL.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    model.CvName = FileUploader.UplodFile("docs/", model.Cv);
+                    model.ImageName = FileUploader.UplodFile("images/", model.Image);
                     var data = mapper.Map<Employee>(model);
                     employee.Update(data);
                     return RedirectToAction("Index");
