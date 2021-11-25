@@ -198,6 +198,9 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
   <data name="WTE" xml:space="preserve">
     <value>Welcome To Employee</value>
   </data>

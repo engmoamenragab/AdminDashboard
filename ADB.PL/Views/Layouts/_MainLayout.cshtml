@@ -1,4 +1,5 @@
-﻿@{
+﻿@inject SignInManager<ApplicationUser> signInManager
+@{
     var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 }
 
@@ -344,53 +345,79 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">fingerprint</i>
-                            <span>Departments</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a asp-controller="Department" asp-action="Index">Department Card</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">badge</i>
-                            <span>Employees</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a asp-controller="Employee" asp-action="Index">Employee Card</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">priority_high</i>
-                            <span>Injection</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a asp-controller="TestInject" asp-action="Index">Injection Card</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">email</i>
-                            <span>Mail</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a asp-controller="Mail" asp-action="SendMail">Send Mail</a>
-                            </li>
-                            <li>
-                                <a @*asp-controller="Mail" asp-action="SendMail"*@ href="#">Inbox</a>
-                            </li>
-                        </ul>
-                    </li>
+                    @*Admin/User*@
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">fingerprint</i>
+                                <span>Departments</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a asp-controller="Department" asp-action="Index">Department Card</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">badge</i>
+                                <span>Employees</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a asp-controller="Employee" asp-action="Index">Employee Card</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @*Admin/Test*@
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Test"))
+                    {
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">priority_high</i>
+                                <span>Injection</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a asp-controller="TestInject" asp-action="Index">Injection Card</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">email</i>
+                                <span>Mail</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a asp-controller="Mail" asp-action="SendMail">Send Mail</a>
+                                </li>
+                                <li>
+                                    <a @*asp-controller="Mail" asp-action="SendMail"*@ href="#">Inbox</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @*Admin*@
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">people</i>
+                                <span>Privilidge</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a asp-controller="User" asp-action="Index">Users</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Role" asp-action="Index">Roles</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
             <!-- #Menu -->

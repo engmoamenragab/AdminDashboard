@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ADB.PL.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,User,Test")]
     public class HomeController : Controller
     {
         private readonly IStringLocalizer<SharedResource> sharedLocalizer;

@@ -1,0 +1,33 @@
+﻿@model IdentityRole
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<form asp-controller="Role" asp-action="Update" class="form-group">
+
+    <div asp-validation-summary="All" class="alert-danger"></div>
+
+    <label asp-for="Id">Id</label>
+    <input asp-for="Id" type="text" class="form-control" readonly />
+    <br />
+
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" type="text" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+
+    <div class="text-center" style="margin-top: 1.5rem !important;">
+        <a asp-controller="Role" asp-action="Index" class="btn btn-danger">Back</a>
+        <a asp-controller="Role" asp-action="AddOrRemoveUsers" asp-route-roleId="@Model.Id" class="btn btn-warning">Add or Remove User with Role</a>
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+
+</form>
+
+@section JqueryValidation
+{
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

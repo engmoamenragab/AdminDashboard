@@ -1,0 +1,28 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<form asp-controller="User" asp-action="Update" class="form-group">
+
+
+    <label asp-for="Id">Id</label>
+    <input asp-for="Id" type="text" class="form-control" readonly />
+    <br />
+
+    <label asp-for="UserName">User Name</label>
+    <input asp-for="UserName" type="text" class="form-control" />
+    <br />
+
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" type="text" class="form-control" />
+    <br />
+
+    <div class="text-center" style="margin-top: 1.5rem !important;">
+        <a asp-controller="User" asp-action="Index" class="btn btn-danger">Back</a>
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+
+</form>
