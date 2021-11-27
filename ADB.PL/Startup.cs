@@ -45,12 +45,12 @@ namespace ADB.PL
                     options.DataAnnotationLocalizerProvider = (type, factory) =>
                         factory.Create(typeof(SharedResource));
                 })
-                .AddNewtonsoftJson(opt => 
+                .AddNewtonsoftJson(opt =>
                 {
                 opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 });
 
-            services.AddDbContextPool<AdminDashboardContext>(options 
+            services.AddDbContextPool<AdminDashboardContext>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("AdminDashboardDbConnection")));
 
             services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
@@ -72,8 +72,8 @@ namespace ADB.PL
                     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
                         options =>
                         {
-                            options.LoginPath = new PathString("/Account/Login");
-                            options.AccessDeniedPath = new PathString("/Account/Login");
+                            options.LoginPath = new PathString("/Account/Signin");
+                            options.AccessDeniedPath = new PathString("/Account/Signin");
                         });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
