@@ -24,7 +24,7 @@ namespace ADB.BL.Helpers
             }
             catch (Exception ex)
             {
-                var result = "Failed To Sent!";
+                var result = ex.Message;
                 return result;
             }
         }

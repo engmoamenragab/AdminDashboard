@@ -68,14 +68,6 @@ namespace ADB.PL
             // Take only one Instance for all clients
             //services.AddSingletone<IDepartmentRepo, DepartmentRepo>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
-                        options =>
-                        {
-                            options.LoginPath = new PathString("/Account/Signin");
-                            options.AccessDeniedPath = new PathString("/Account/Signin");
-                        });
-
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // We can add a default user settings also.
@@ -90,6 +82,21 @@ namespace ADB.PL
                 options.Password.RequiredUniqueChars = 0;
             }).AddEntityFrameworkStores<AdminDashboardContext>()
             .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            //options =>
+            //{
+            //    options.LoginPath = new PathString("/Account/Signin");
+            //    options.AccessDeniedPath = new PathString("/Account/Signin");
+            //});
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Signin";
+                options.AccessDeniedPath = "/Account/Signin";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -46,15 +46,20 @@ namespace ADB.PL.Controllers
                         IsAgree = model.IsAgree
                     };
                     // We pass the password separate to make it hash
-                    var result = await userManager.CreateAsync(user, model.Password);
-
-                    if(result.Succeeded)
+                    var userResult = await userManager.CreateAsync(user, model.Password);
+                    // We add the user to the User role as default role
+                    var roleResult = await userManager.AddToRoleAsync(user, "User");
+                    if (userResult.Succeeded && roleResult.Succeeded)
                     {
                         return RedirectToAction("Signin");
                     }
                     else
                     {
-                        foreach (var item in result.Errors)
+                        foreach (var item in userResult.Errors)
+                        {
+                            ModelState.AddModelError("", item.Description);
+                        }
+                        foreach (var item in roleResult.Errors)
                         {
                             ModelState.AddModelError("", item.Description);
                         }
@@ -64,6 +69,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -98,6 +104,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -148,6 +155,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -200,6 +208,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }

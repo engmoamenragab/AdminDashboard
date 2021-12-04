@@ -68,6 +68,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -108,6 +109,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }

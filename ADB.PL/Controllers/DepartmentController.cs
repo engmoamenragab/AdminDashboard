@@ -67,7 +67,7 @@ namespace ADB.PL.Controllers
 
             //ViewBag.Data = EmpsList;
 
-            //return RedirectToAction("Index", "Home"); 
+            //return RedirectToAction("Index", "Home");
             #endregion
 
             if (SearchValue == null)
@@ -105,6 +105,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -139,6 +140,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }
@@ -162,6 +164,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
         }

@@ -86,6 +86,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 ViewBag.DepartmentList = new SelectList(department.Get(), "Id", "Name");
                 return View(model);
             }
@@ -126,6 +127,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 ViewBag.DepartmentList = new SelectList(department.Get(), "Id", "Name", model.DepartmentId);
                 return View(model);
             }
@@ -154,6 +156,7 @@ namespace ADB.PL.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("", ex.Message);
                 ViewBag.DepartmentList = new SelectList(department.Get(), "Id", "Name", model.DepartmentId);
                 return View(model);
             }
